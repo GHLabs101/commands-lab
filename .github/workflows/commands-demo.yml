@@ -9,5 +9,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Basic Step
-        run: echo "This is our starting workflow step."
+      - name: Generate Random Number
+        id: random-step
+        run: |
+          RANDOM_NUMBER=$((RANDOM % 100))
+          echo "Generated random number: $RANDOM_NUMBER"
+          echo "random-number=$RANDOM_NUMBER" >> $GITHUB_OUTPUT
+
+      - name: Use Generated Number
+        run: |
+          echo "🎲 Using the number: ${{ steps.random-step.outputs.random-number }}"
+
