@@ -12,11 +12,16 @@ jobs:
       - name: Generate Random Number
         id: random-step
         run: |
+          echo "::group::🔢 Generating Random Number"
           RANDOM_NUMBER=$((RANDOM % 100))
           echo "Generated random number: $RANDOM_NUMBER"
           echo "random-number=$RANDOM_NUMBER" >> $GITHUB_OUTPUT
+          echo "::endgroup::"
 
       - name: Use Generated Number
         run: |
+          echo "::group::📌 Using Generated Number"
           echo "🎲 Using the number: ${{ steps.random-step.outputs.random-number }}"
+          echo "::endgroup::"
+
 
