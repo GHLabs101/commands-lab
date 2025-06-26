@@ -1,0 +1,13 @@
+name: Workflow Commands Demo
+
+on: push
+
+jobs:
+  demo-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Basic Step
+        run: echo "This is our starting workflow step."
